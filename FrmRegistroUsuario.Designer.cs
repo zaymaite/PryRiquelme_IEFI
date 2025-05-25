@@ -159,9 +159,8 @@
             this.CmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCategoria.FormattingEnabled = true;
             this.CmbCategoria.Items.AddRange(new object[] {
-            "Dueño",
-            "Gerente",
-            "Empleado"});
+            "Administrador",
+            "Operador"});
             this.CmbCategoria.Location = new System.Drawing.Point(102, 152);
             this.CmbCategoria.Name = "CmbCategoria";
             this.CmbCategoria.Size = new System.Drawing.Size(200, 23);

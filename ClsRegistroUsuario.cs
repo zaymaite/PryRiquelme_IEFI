@@ -10,7 +10,7 @@ using System.Data;
 
 namespace PryRiquelme_IEFI
 {
-    internal class ClsRegistroUsuario
+    public class ClsRegistroUsuario
     {
 
         private OleDbCommand comando = new OleDbCommand();
@@ -69,6 +69,7 @@ namespace PryRiquelme_IEFI
 
         public class UsuarioLogueado
         {
+            public int IdUsuario { get; set; }
             public string Nombre { get; set; }
             public string Apellido { get; set; }
             public string Usuario { get; set; }
@@ -89,6 +90,7 @@ namespace PryRiquelme_IEFI
                 {
                     return new UsuarioLogueado
                     {
+                        IdUsuario = Convert.ToInt32(reader["IdUsuario"]),
                         Nombre = reader["Nombre"].ToString(),
                         Apellido = reader["Apellido"].ToString(),
                         Usuario = reader["Nombre de usuario"].ToString(),
@@ -102,6 +104,34 @@ namespace PryRiquelme_IEFI
             }
         }
 
+        public void RegistrarAuditoria(int idUsuario, DateTime FechaHora)
+        {
+            using (OleDbConnection conexion = ClsConexion.Conexion())
+            {
+                string query = "INSERT INTO Auditoria (IdUsuario, [Fecha_Hora]) VALUES (?, ?)"; //obliga a Access a interpretar los parámetros como número y fecha
+                using (OleDbCommand comando = new OleDbCommand(query, conexion))
+                {
+                    comando.Parameters.Add("?", OleDbType.Integer).Value = idUsuario;
+                    comando.Parameters.Add("?", OleDbType.Date).Value = FechaHora;
+                    comando.ExecuteNonQuery();
+                }
+
+            }
+        }
+        public void RegistrarTiempoUso(int idUsuario, TimeSpan tiempoUso)
+        {
+            using (OleDbConnection conexion = ClsConexion.Conexion())
+            {
+                string query = "UPDATE Auditoria SET [Tiempo de Uso] = ? WHERE IdUsuario = ? AND [Tiempo de Uso] IS NULL";
+                using (OleDbCommand comando = new OleDbCommand(query, conexion))
+                {
+                    comando.Parameters.AddWithValue("?", tiempoUso.ToString(@"hh\:mm\:ss"));
+                    comando.Parameters.AddWithValue("?", idUsuario);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void Mostrar(DataGridView grilla)
         {
             using (OleDbConnection conexion = ClsConexion.Conexion())
@@ -110,14 +140,14 @@ namespace PryRiquelme_IEFI
                 {
                     comando.Connection = conexion;
                     comando.CommandType = CommandType.TableDirect;
-                    comando.CommandText = "Registro_Usuario";
+                    comando.CommandText = "Auditoria";
 
                     DataSet DS = new DataSet();
                     adaptador = new OleDbDataAdapter(comando);
-                    adaptador.Fill(DS, "Registro_Usuario");
+                    adaptador.Fill(DS, "Auditoria");
 
                     grilla.DataSource = null;
-                    grilla.DataSource = DS.Tables["Registro_Usuario"];
+                    grilla.DataSource = DS.Tables["Auditoria"];
 
                 }
                 catch (Exception ex)

@@ -34,12 +34,10 @@ namespace PryRiquelme_IEFI
             var datosUsuario = usuario.Ingresar(TxtUsuario.Text, TxtContraseña.Text);
             if (datosUsuario != null)
             {
-                FrmSistemaPrincipal principal = new FrmSistemaPrincipal(
-                    datosUsuario.Nombre,
-                    datosUsuario.Apellido,
-                    datosUsuario.Usuario
-                );
+                DateTime inicioSesion = DateTime.Now;
+                usuario.RegistrarAuditoria(datosUsuario.IdUsuario, inicioSesion);
 
+                FrmSistemaPrincipal principal = new FrmSistemaPrincipal(datosUsuario, inicioSesion);
                 principal.ShowDialog();
                 this.Hide();
             }

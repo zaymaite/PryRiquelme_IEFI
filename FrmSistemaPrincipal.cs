@@ -7,16 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PryRiquelme_IEFI.ClsRegistroUsuario;
 
 namespace PryRiquelme_IEFI
 {
     public partial class FrmSistemaPrincipal : Form
     {
         string nombreUsuario;
-        public FrmSistemaPrincipal(string nombre, string apellido, string usuario)
+        UsuarioLogueado usuarioActual;
+        DateTime inicioSesion;
+        public FrmSistemaPrincipal(UsuarioLogueado usuario, DateTime inicio)
         {
             InitializeComponent();
-            nombreUsuario = $"{nombre} {apellido} ({usuario})";
+            usuarioActual = usuario;
+            inicioSesion = inicio;
+            nombreUsuario = $"{usuario.Nombre} {usuario.Apellido} ({usuario.Usuario})";
         }
         
         private void FrmSistemaPrincipal_Load(object sender, EventArgs e)
@@ -38,6 +43,14 @@ namespace PryRiquelme_IEFI
         {
             FrmAuditoria auditoria = new FrmAuditoria();
             auditoria.ShowDialog();
+        }
+
+
+        private void FrmSistemaPrincipal_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            TimeSpan tiempoUso = DateTime.Now - inicioSesion;
+            ClsRegistroUsuario auditoria = new ClsRegistroUsuario();
+            auditoria.RegistrarTiempoUso(usuarioActual.IdUsuario, tiempoUso);
         }
     }
 }

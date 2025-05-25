@@ -71,13 +71,13 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios...";
             // 
             // auditoriasToolStripMenuItem
             // 
             this.auditoriasToolStripMenuItem.Name = "auditoriasToolStripMenuItem";
-            this.auditoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.auditoriasToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.auditoriasToolStripMenuItem.Text = "Auditorias...";
             this.auditoriasToolStripMenuItem.Click += new System.EventHandler(this.auditoriasToolStripMenuItem_Click);
             // 
@@ -100,7 +100,7 @@
             // StatusLblTiempo
             // 
             this.StatusLblTiempo.Name = "StatusLblTiempo";
-            this.StatusLblTiempo.Size = new System.Drawing.Size(724, 17);
+            this.StatusLblTiempo.Size = new System.Drawing.Size(802, 17);
             this.StatusLblTiempo.Spring = true;
             this.StatusLblTiempo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -123,6 +123,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSistemaPrincipal_FormClosing_1);
             this.Load += new System.EventHandler(this.FrmSistemaPrincipal_Load);
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
