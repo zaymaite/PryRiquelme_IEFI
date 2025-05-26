@@ -32,6 +32,7 @@ namespace PryRiquelme_IEFI
             timer.Start();
 
             StatusLblUsuario.Text = $"👤 Sesión iniciada: {nombreUsuario}";
+            auditoriasToolStripMenuItem.Enabled = usuarioActual.Categoria == "Administrador";
         }
 
         private void Tiempo_Tick(object sender, EventArgs e)

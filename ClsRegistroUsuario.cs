@@ -73,6 +73,7 @@ namespace PryRiquelme_IEFI
             public string Nombre { get; set; }
             public string Apellido { get; set; }
             public string Usuario { get; set; }
+            public string Categoria { get; set; }
         }
 
         public UsuarioLogueado Ingresar(string Usuario, string contraseña)
@@ -94,6 +95,7 @@ namespace PryRiquelme_IEFI
                         Nombre = reader["Nombre"].ToString(),
                         Apellido = reader["Apellido"].ToString(),
                         Usuario = reader["Nombre de usuario"].ToString(),
+                        Categoria = reader["Categoria"].ToString()
                     };
                 }
                 else
