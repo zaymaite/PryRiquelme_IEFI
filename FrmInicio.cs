@@ -29,7 +29,8 @@ namespace PryRiquelme_IEFI
         }
 
         ClsRegistroUsuario usuario = new ClsRegistroUsuario();
-        private void BtnIngresar_Click(object sender, EventArgs e)
+
+        private void BtnIngresar_Click_1(object sender, EventArgs e)
         {
             var datosUsuario = usuario.Ingresar(TxtUsuario.Text, TxtContraseña.Text);
             if (datosUsuario != null)

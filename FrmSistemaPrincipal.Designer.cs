@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSistemaPrincipal));
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.tareasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,8 +39,10 @@
             this.StatusLblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLblTiempo = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tiempo = new System.Windows.Forms.Timer(this.components);
+            this.ImagenLogo = new System.Windows.Forms.PictureBox();
             this.Menu.SuspendLayout();
             this.StatusUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImagenLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // Menu
@@ -71,13 +74,13 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios...";
             // 
             // auditoriasToolStripMenuItem
             // 
             this.auditoriasToolStripMenuItem.Name = "auditoriasToolStripMenuItem";
-            this.auditoriasToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.auditoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.auditoriasToolStripMenuItem.Text = "Auditorias...";
             this.auditoriasToolStripMenuItem.Click += new System.EventHandler(this.auditoriasToolStripMenuItem_Click);
             // 
@@ -108,15 +111,28 @@
             // 
             this.Tiempo.Tick += new System.EventHandler(this.Tiempo_Tick);
             // 
+            // ImagenLogo
+            // 
+            this.ImagenLogo.Image = ((System.Drawing.Image)(resources.GetObject("ImagenLogo.Image")));
+            this.ImagenLogo.Location = new System.Drawing.Point(179, 61);
+            this.ImagenLogo.Name = "ImagenLogo";
+            this.ImagenLogo.Size = new System.Drawing.Size(484, 422);
+            this.ImagenLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.ImagenLogo.TabIndex = 2;
+            this.ImagenLogo.TabStop = false;
+            // 
             // FrmSistemaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Bisque;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(817, 519);
+            this.Controls.Add(this.ImagenLogo);
             this.Controls.Add(this.StatusUsuario);
             this.Controls.Add(this.Menu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.Menu;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmSistemaPrincipal";
@@ -129,6 +145,7 @@
             this.Menu.PerformLayout();
             this.StatusUsuario.ResumeLayout(false);
             this.StatusUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImagenLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +162,6 @@
         private System.Windows.Forms.ToolStripStatusLabel StatusLblUsuario;
         private System.Windows.Forms.ToolStripStatusLabel StatusLblTiempo;
         private System.Windows.Forms.Timer Tiempo;
+        private System.Windows.Forms.PictureBox ImagenLogo;
     }
 }

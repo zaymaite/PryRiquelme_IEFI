@@ -65,5 +65,18 @@ namespace PryRiquelme_IEFI
         {
 
         }
+
+        private void FrmRegistroUsuario_Load(object sender, EventArgs e)
+        {
+            GrpUsuario.Visible = false;
+            this.Size = new Size(433, 454);
+        }
+
+        private void BtnContinuar_Click(object sender, EventArgs e)
+        {
+            GrpUsuario.Visible = true;
+            GrpUsuario.Location = new Point(GrpPersonal.Right + 20, GrpPersonal.Top);
+            this.Size = new Size(821, 454);
+        }
     }
 }

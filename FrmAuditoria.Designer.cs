@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAuditoria));
             this.GrpLogueados = new System.Windows.Forms.GroupBox();
-            this.BtnMostrar = new System.Windows.Forms.Button();
             this.DgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.BtnMostrar = new System.Windows.Forms.Button();
             this.GrpLogueados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +46,16 @@
             this.GrpLogueados.TabIndex = 0;
             this.GrpLogueados.TabStop = false;
             this.GrpLogueados.Text = "Usuarios Logueados";
+            // 
+            // DgvUsuarios
+            // 
+            this.DgvUsuarios.BackgroundColor = System.Drawing.Color.BlanchedAlmond;
+            this.DgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvUsuarios.Location = new System.Drawing.Point(24, 31);
+            this.DgvUsuarios.Name = "DgvUsuarios";
+            this.DgvUsuarios.Size = new System.Drawing.Size(609, 254);
+            this.DgvUsuarios.TabIndex = 0;
+            this.DgvUsuarios.Visible = false;
             // 
             // BtnMostrar
             // 
@@ -62,25 +73,16 @@
             this.BtnMostrar.UseVisualStyleBackColor = false;
             this.BtnMostrar.Click += new System.EventHandler(this.BtnMostrar_Click);
             // 
-            // DgvUsuarios
-            // 
-            this.DgvUsuarios.BackgroundColor = System.Drawing.Color.BlanchedAlmond;
-            this.DgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvUsuarios.Location = new System.Drawing.Point(24, 31);
-            this.DgvUsuarios.Name = "DgvUsuarios";
-            this.DgvUsuarios.Size = new System.Drawing.Size(609, 254);
-            this.DgvUsuarios.TabIndex = 0;
-            this.DgvUsuarios.Visible = false;
-            // 
             // FrmAuditoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Bisque;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(708, 418);
             this.Controls.Add(this.BtnMostrar);
             this.Controls.Add(this.GrpLogueados);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmAuditoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
