@@ -38,12 +38,14 @@
             this.LblIngresa = new System.Windows.Forms.Label();
             this.LblContraseña = new System.Windows.Forms.Label();
             this.LblUsuario = new System.Windows.Forms.Label();
+            this.LinkContraseña = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblPregunta
             // 
             this.LblPregunta.AutoSize = true;
+            this.LblPregunta.BackColor = System.Drawing.Color.Pink;
             this.LblPregunta.Location = new System.Drawing.Point(174, 338);
             this.LblPregunta.Name = "LblPregunta";
             this.LblPregunta.Size = new System.Drawing.Size(146, 16);
@@ -54,7 +56,7 @@
             // 
             this.LinkRegistrar.ActiveLinkColor = System.Drawing.Color.DodgerBlue;
             this.LinkRegistrar.AutoSize = true;
-            this.LinkRegistrar.BackColor = System.Drawing.Color.Bisque;
+            this.LinkRegistrar.BackColor = System.Drawing.Color.Pink;
             this.LinkRegistrar.ForeColor = System.Drawing.Color.RoyalBlue;
             this.LinkRegistrar.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.LinkRegistrar.Location = new System.Drawing.Point(326, 338);
@@ -68,6 +70,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.LinkContraseña);
             this.groupBox1.Controls.Add(this.TxtContraseña);
             this.groupBox1.Controls.Add(this.TxtUsuario);
             this.groupBox1.Controls.Add(this.BtnIngresar);
@@ -85,7 +88,7 @@
             this.TxtContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.TxtContraseña.Location = new System.Drawing.Point(23, 167);
             this.TxtContraseña.Name = "TxtContraseña";
-            this.TxtContraseña.Size = new System.Drawing.Size(252, 22);
+            this.TxtContraseña.Size = new System.Drawing.Size(269, 22);
             this.TxtContraseña.TabIndex = 11;
             this.TxtContraseña.UseSystemPasswordChar = true;
             // 
@@ -94,7 +97,7 @@
             this.TxtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.TxtUsuario.Location = new System.Drawing.Point(23, 105);
             this.TxtUsuario.Name = "TxtUsuario";
-            this.TxtUsuario.Size = new System.Drawing.Size(252, 22);
+            this.TxtUsuario.Size = new System.Drawing.Size(269, 22);
             this.TxtUsuario.TabIndex = 10;
             // 
             // BtnIngresar
@@ -105,7 +108,7 @@
             this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SandyBrown;
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnIngresar.Location = new System.Drawing.Point(91, 228);
+            this.BtnIngresar.Location = new System.Drawing.Point(91, 235);
             this.BtnIngresar.Name = "BtnIngresar";
             this.BtnIngresar.Size = new System.Drawing.Size(145, 36);
             this.BtnIngresar.TabIndex = 4;
@@ -140,6 +143,17 @@
             this.LblUsuario.Size = new System.Drawing.Size(125, 16);
             this.LblUsuario.TabIndex = 7;
             this.LblUsuario.Text = "Nombre de Usuario";
+            // 
+            // LinkContraseña
+            // 
+            this.LinkContraseña.AutoSize = true;
+            this.LinkContraseña.Location = new System.Drawing.Point(159, 192);
+            this.LinkContraseña.Name = "LinkContraseña";
+            this.LinkContraseña.Size = new System.Drawing.Size(133, 16);
+            this.LinkContraseña.TabIndex = 12;
+            this.LinkContraseña.TabStop = true;
+            this.LinkContraseña.Text = "Olvidé mi contraseña";
+            this.LinkContraseña.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkContraseña_LinkClicked);
             // 
             // FrmInicio
             // 
@@ -177,6 +191,7 @@
         private System.Windows.Forms.Label LblIngresa;
         private System.Windows.Forms.Label LblContraseña;
         private System.Windows.Forms.Label LblUsuario;
+        private System.Windows.Forms.LinkLabel LinkContraseña;
     }
 }
 

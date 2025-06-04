@@ -54,6 +54,12 @@
     <Compile Include="FrmAuditoria.Designer.cs">
       <DependentUpon>FrmAuditoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCambioContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCambioContraseña.Designer.cs">
+      <DependentUpon>FrmCambioContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAuditoria.resx">
       <DependentUpon>FrmAuditoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCambioContraseña.resx">
+      <DependentUpon>FrmCambioContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>

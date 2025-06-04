@@ -18,7 +18,8 @@ namespace PryRiquelme_IEFI
         }
 
         ClsRegistroUsuario usuario = new ClsRegistroUsuario();
-        private void BtnMostrar_Click(object sender, EventArgs e)
+
+        private void FrmAuditoria_Load(object sender, EventArgs e)
         {
             DgvUsuarios.Visible = true;
             usuario.Mostrar(DgvUsuarios);

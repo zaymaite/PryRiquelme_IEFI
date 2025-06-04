@@ -34,6 +34,7 @@ namespace PryRiquelme_IEFI
             StatusLblUsuario.Text = $"👤 Sesión iniciada: {nombreUsuario}";
             administradorToolStripMenuItem.Visible = usuarioActual.Categoria == "Administrador" ;
 
+            //Centrar la imagen
             ImagenLogo.Left = (this.ClientSize.Width - ImagenLogo.Width) / 2;
             ImagenLogo.Top = (this.ClientSize.Height - ImagenLogo.Height) / 2;
         }

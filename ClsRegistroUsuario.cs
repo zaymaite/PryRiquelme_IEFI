@@ -159,5 +159,51 @@ namespace PryRiquelme_IEFI
                 }
             }
         }
+
+        public void CambiarContraseña(string usuario, string correo, string contraNueva, string confiContraseña)
+        {
+            if (contraNueva != confiContraseña)
+            {
+                MessageBox.Show("Las contraseñas no coinciden. Intenta de nuevo.");
+                return;
+            }
+            using (OleDbConnection conexion = ClsConexion.Conexion())
+            {
+                string query = "SELECT COUNT(*) FROM Registro_Usuario WHERE [Nombre de usuario] = ? AND [Correo Electrónico] = ?";
+                comando.Parameters.Clear();
+                comando.Connection = conexion;
+                comando.CommandText = query;
+                comando.Parameters.AddWithValue("?", usuario);
+                comando.Parameters.AddWithValue("?", correo);
+
+                int count = Convert.ToInt32(comando.ExecuteScalar());
+
+                if (count == 0)
+                {
+                    MessageBox.Show("Usuario o correo incorrecto.");
+                    return;
+                }
+
+                comando.Parameters.Clear();
+                comando.Connection = conexion;
+                comando.CommandText = "UPDATE Registro_Usuario SET [Contraseña] = ?, [Confirmar Contraseña] = ? WHERE [Nombre de usuario] = ? AND [Correo Electrónico] = ?";
+                comando.Parameters.AddWithValue("?", contraNueva);
+                comando.Parameters.AddWithValue("?", confiContraseña);
+                comando.Parameters.AddWithValue("?", usuario);
+                comando.Parameters.AddWithValue("?", correo);
+
+                int filasAfectadas = comando.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Contraseña actualizada correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar la contraseña.");
+                }
+            }
+
+        }
     }
 }

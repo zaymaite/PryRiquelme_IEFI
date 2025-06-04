@@ -43,5 +43,12 @@ namespace PryRiquelme_IEFI
                 this.Hide();
             }
         }
+
+        private void LinkContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmCambioContraseña cambio = new FrmCambioContraseña();
+            cambio.ShowDialog();
+            this.Hide();
+        }
     }
 }
