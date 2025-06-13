@@ -47,7 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClsConexion.cs" />
+    <Compile Include="ClsGestionDatos.cs" />
+    <Compile Include="ClsHistorial.cs" />
+    <Compile Include="ClsLugares.cs" />
     <Compile Include="ClsRegistroUsuario.cs" />
+    <Compile Include="ClsTareas.cs" />
     <Compile Include="FrmAuditoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,11 +64,29 @@
     <Compile Include="FrmCambioContraseña.Designer.cs">
       <DependentUpon>FrmCambioContraseña.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmGestionarDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionarDatos.Designer.cs">
+      <DependentUpon>FrmGestionarDatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHistorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHistorial.Designer.cs">
+      <DependentUpon>FrmHistorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmInicio.Designer.cs">
       <DependentUpon>FrmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRegistrarTareas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRegistrarTareas.Designer.cs">
+      <DependentUpon>FrmRegistrarTareas.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRegistroUsuario.cs">
       <SubType>Form</SubType>
@@ -86,8 +108,17 @@
     <EmbeddedResource Include="FrmCambioContraseña.resx">
       <DependentUpon>FrmCambioContraseña.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionarDatos.resx">
+      <DependentUpon>FrmGestionarDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHistorial.resx">
+      <DependentUpon>FrmHistorial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegistrarTareas.resx">
+      <DependentUpon>FrmRegistrarTareas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistroUsuario.resx">
       <DependentUpon>FrmRegistroUsuario.cs</DependentUpon>

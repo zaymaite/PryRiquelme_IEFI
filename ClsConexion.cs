@@ -13,7 +13,7 @@ namespace PryRiquelme_IEFI
     internal class ClsConexion
     {
        
-        private static string CadenaConexion = "Provider = Microsoft.JET.OLEDB.4.0; Data Source=Riquelme_IEFI.mdb";
+        private static string CadenaConexion = "Provider=Microsoft.JET.OLEDB.4.0;Data Source=Base de Datos\\Riquelme_IEFI.mdb;";
 
         public static OleDbConnection Conexion()
         {

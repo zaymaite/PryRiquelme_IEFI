@@ -57,5 +57,22 @@ namespace PryRiquelme_IEFI
             ClsRegistroUsuario auditoria = new ClsRegistroUsuario();
             auditoria.RegistrarTiempoUso(usuarioActual.IdUsuario, tiempoUso);
         }
+
+        private void tareasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmRegistrarTareas tarea = new FrmRegistrarTareas(usuarioActual);
+            tarea.ShowDialog();
+        }
+
+        private void historialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmHistorial historial = new FrmHistorial();
+            historial.ShowDialog();
+        }
+
+        private void administradorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

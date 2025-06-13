@@ -40,6 +40,7 @@
             this.StatusLblTiempo = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tiempo = new System.Windows.Forms.Timer(this.components);
             this.ImagenLogo = new System.Windows.Forms.PictureBox();
+            this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu.SuspendLayout();
             this.StatusUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenLogo)).BeginInit();
@@ -58,9 +59,12 @@
             // 
             // tareasToolStripMenuItem
             // 
+            this.tareasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.historialToolStripMenuItem});
             this.tareasToolStripMenuItem.Name = "tareasToolStripMenuItem";
             this.tareasToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.tareasToolStripMenuItem.Text = "Tareas";
+            this.tareasToolStripMenuItem.Click += new System.EventHandler(this.tareasToolStripMenuItem_Click);
             // 
             // administradorToolStripMenuItem
             // 
@@ -70,17 +74,18 @@
             this.administradorToolStripMenuItem.Name = "administradorToolStripMenuItem";
             this.administradorToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.administradorToolStripMenuItem.Text = "Administrador";
+            this.administradorToolStripMenuItem.Click += new System.EventHandler(this.administradorToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios...";
             // 
             // auditoriasToolStripMenuItem
             // 
             this.auditoriasToolStripMenuItem.Name = "auditoriasToolStripMenuItem";
-            this.auditoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.auditoriasToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.auditoriasToolStripMenuItem.Text = "Auditorias...";
             this.auditoriasToolStripMenuItem.Click += new System.EventHandler(this.auditoriasToolStripMenuItem_Click);
             // 
@@ -120,6 +125,13 @@
             this.ImagenLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.ImagenLogo.TabIndex = 2;
             this.ImagenLogo.TabStop = false;
+            // 
+            // historialToolStripMenuItem
+            // 
+            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
+            this.historialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.historialToolStripMenuItem.Text = "Historial...";
+            this.historialToolStripMenuItem.Click += new System.EventHandler(this.historialToolStripMenuItem_Click);
             // 
             // FrmSistemaPrincipal
             // 
@@ -163,5 +175,6 @@
         private System.Windows.Forms.ToolStripStatusLabel StatusLblTiempo;
         private System.Windows.Forms.Timer Tiempo;
         private System.Windows.Forms.PictureBox ImagenLogo;
+        private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
     }
 }
