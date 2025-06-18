@@ -30,14 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHistorial));
             this.GbHistorial = new System.Windows.Forms.GroupBox();
-            this.CmbTarea = new System.Windows.Forms.ComboBox();
-            this.LblTarea = new System.Windows.Forms.Label();
+            this.BtnMostrar = new System.Windows.Forms.Button();
             this.DtpFecha = new System.Windows.Forms.DateTimePicker();
             this.LblFecha = new System.Windows.Forms.Label();
             this.DgvHistorial = new System.Windows.Forms.DataGridView();
             this.CmbUsuario = new System.Windows.Forms.ComboBox();
             this.LblUsuario = new System.Windows.Forms.Label();
-            this.BtnMostrar = new System.Windows.Forms.Button();
+            this.BtnVer = new System.Windows.Forms.Button();
             this.GbHistorial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvHistorial)).BeginInit();
             this.SuspendLayout();
@@ -45,9 +44,8 @@
             // GbHistorial
             // 
             this.GbHistorial.BackColor = System.Drawing.Color.BurlyWood;
+            this.GbHistorial.Controls.Add(this.BtnVer);
             this.GbHistorial.Controls.Add(this.BtnMostrar);
-            this.GbHistorial.Controls.Add(this.CmbTarea);
-            this.GbHistorial.Controls.Add(this.LblTarea);
             this.GbHistorial.Controls.Add(this.DtpFecha);
             this.GbHistorial.Controls.Add(this.LblFecha);
             this.GbHistorial.Controls.Add(this.DgvHistorial);
@@ -61,28 +59,23 @@
             this.GbHistorial.Text = "Filtrar Por:";
             this.GbHistorial.Enter += new System.EventHandler(this.GbHistorial_Enter);
             // 
-            // CmbTarea
+            // BtnMostrar
             // 
-            this.CmbTarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbTarea.FormattingEnabled = true;
-            this.CmbTarea.Location = new System.Drawing.Point(552, 38);
-            this.CmbTarea.Name = "CmbTarea";
-            this.CmbTarea.Size = new System.Drawing.Size(177, 23);
-            this.CmbTarea.TabIndex = 15;
-            // 
-            // LblTarea
-            // 
-            this.LblTarea.AutoSize = true;
-            this.LblTarea.Location = new System.Drawing.Point(507, 39);
-            this.LblTarea.Name = "LblTarea";
-            this.LblTarea.Size = new System.Drawing.Size(39, 15);
-            this.LblTarea.TabIndex = 14;
-            this.LblTarea.Text = "Tarea";
+            this.BtnMostrar.BackColor = System.Drawing.Color.LightSalmon;
+            this.BtnMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnMostrar.Location = new System.Drawing.Point(693, 290);
+            this.BtnMostrar.Name = "BtnMostrar";
+            this.BtnMostrar.Size = new System.Drawing.Size(79, 25);
+            this.BtnMostrar.TabIndex = 16;
+            this.BtnMostrar.Text = "Mostrar";
+            this.BtnMostrar.UseVisualStyleBackColor = false;
+            this.BtnMostrar.Click += new System.EventHandler(this.BtnMostrar_Click);
             // 
             // DtpFecha
             // 
             this.DtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFecha.Location = new System.Drawing.Point(354, 38);
+            this.DtpFecha.Location = new System.Drawing.Point(469, 39);
             this.DtpFecha.Name = "DtpFecha";
             this.DtpFecha.Size = new System.Drawing.Size(111, 21);
             this.DtpFecha.TabIndex = 13;
@@ -90,7 +83,7 @@
             // LblFecha
             // 
             this.LblFecha.AutoSize = true;
-            this.LblFecha.Location = new System.Drawing.Point(307, 41);
+            this.LblFecha.Location = new System.Drawing.Point(422, 42);
             this.LblFecha.Name = "LblFecha";
             this.LblFecha.Size = new System.Drawing.Size(41, 15);
             this.LblFecha.TabIndex = 12;
@@ -110,7 +103,7 @@
             // 
             this.CmbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbUsuario.FormattingEnabled = true;
-            this.CmbUsuario.Location = new System.Drawing.Point(97, 36);
+            this.CmbUsuario.Location = new System.Drawing.Point(212, 37);
             this.CmbUsuario.Name = "CmbUsuario";
             this.CmbUsuario.Size = new System.Drawing.Size(177, 23);
             this.CmbUsuario.TabIndex = 10;
@@ -118,24 +111,24 @@
             // LblUsuario
             // 
             this.LblUsuario.AutoSize = true;
-            this.LblUsuario.Location = new System.Drawing.Point(41, 38);
+            this.LblUsuario.Location = new System.Drawing.Point(156, 39);
             this.LblUsuario.Name = "LblUsuario";
             this.LblUsuario.Size = new System.Drawing.Size(50, 15);
             this.LblUsuario.TabIndex = 9;
             this.LblUsuario.Text = "Usuario";
             // 
-            // BtnMostrar
+            // BtnVer
             // 
-            this.BtnMostrar.BackColor = System.Drawing.Color.LightSalmon;
-            this.BtnMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMostrar.Location = new System.Drawing.Point(693, 290);
-            this.BtnMostrar.Name = "BtnMostrar";
-            this.BtnMostrar.Size = new System.Drawing.Size(79, 25);
-            this.BtnMostrar.TabIndex = 16;
-            this.BtnMostrar.Text = "Mostrar";
-            this.BtnMostrar.UseVisualStyleBackColor = false;
-            this.BtnMostrar.Click += new System.EventHandler(this.BtnMostrar_Click);
+            this.BtnVer.BackColor = System.Drawing.Color.LightSalmon;
+            this.BtnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnVer.Location = new System.Drawing.Point(572, 290);
+            this.BtnVer.Name = "BtnVer";
+            this.BtnVer.Size = new System.Drawing.Size(79, 25);
+            this.BtnVer.TabIndex = 17;
+            this.BtnVer.Text = "Mostrar";
+            this.BtnVer.UseVisualStyleBackColor = false;
+            this.BtnVer.Click += new System.EventHandler(this.BtnVer_Click);
             // 
             // FrmHistorial
             // 
@@ -160,13 +153,12 @@
 
         #endregion
         private System.Windows.Forms.GroupBox GbHistorial;
-        private System.Windows.Forms.ComboBox CmbTarea;
-        private System.Windows.Forms.Label LblTarea;
         private System.Windows.Forms.DateTimePicker DtpFecha;
         private System.Windows.Forms.Label LblFecha;
         private System.Windows.Forms.DataGridView DgvHistorial;
         private System.Windows.Forms.ComboBox CmbUsuario;
         private System.Windows.Forms.Label LblUsuario;
         private System.Windows.Forms.Button BtnMostrar;
+        private System.Windows.Forms.Button BtnVer;
     }
 }

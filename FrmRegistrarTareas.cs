@@ -80,22 +80,22 @@ namespace PryRiquelme_IEFI
 
         private void BtnGrabar_Click(object sender, EventArgs e)
         {
-            // Armás las cadenas con los valores seleccionados:
             string uniforme = ChkInsumo.Checked ? "Insumo" : "";
 
-            string licencia = "";
-            if (ChkEstudio.Checked) licencia += "Estudio ";
-            if (ChkVacación.Checked) licencia += "Vacación";
+            // Listas de IDs de licencias y reclamos seleccionados
+            List<int> licencias = new List<int>();
+            if (ChkEstudio.Checked) licencias.Add(1);   // ID 1 para "Estudio"
+            if (ChkVacación.Checked) licencias.Add(2);  // ID 2 para "Vacación"
 
-            string reclamo = "";
-            if (ChkSalario.Checked) reclamo += "Salario ";
-            if (ChkRecibo.Checked) reclamo += "Recibo";
+            List<int> reclamos = new List<int>();
+            if (ChkSalario.Checked) reclamos.Add(1);    // ID 1 para "Salario"
+            if (ChkRecibo.Checked) reclamos.Add(2);     // ID 2 para "Recibo"
 
             string comentario = TxtComentario.Text;
+            DateTime fecha = DateTime.Now; // o usar un DateTimePicker si tenés uno
 
-            // Guardar en la tabla Detalles
             ClsGestionDatos detalles = new ClsGestionDatos(usuarioActual);
-            detalles.GuardarDetalles(uniforme, licencia, reclamo, comentario);
+            detalles.GuardarDetalles(fecha, uniforme, licencias, reclamos, comentario);
 
             TxtComentario.Clear();
             ChkEstudio.Checked = false;

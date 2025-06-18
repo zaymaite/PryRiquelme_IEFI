@@ -65,28 +65,80 @@ namespace PryRiquelme_IEFI
             }
         }
 
-        public void GuardarDetalles(string uniforme, string licencia, string reclamo, string comentario)
+        private int ObtenerId(string tabla, string nombre, OleDbConnection conexion)
+        {
+            if (string.IsNullOrWhiteSpace(nombre)) return -1;
+
+            string query = $"SELECT Id{tabla} FROM {tabla} WHERE Nombre = ?";
+            using (var comando = new OleDbCommand(query, conexion))
+            {
+                comando.Parameters.AddWithValue("?", nombre);
+                var result = comando.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : -1;
+            }
+        }
+
+        public void GuardarDetalles(DateTime fecha, string uniforme, List<int> licencias, List<int> reclamos, string comentario)
         {
             using (OleDbConnection conexion = ClsConexion.Conexion())
             {
+                OleDbTransaction transaccion = null;
+
                 try
                 {
-                    string query = "INSERT INTO [Detalles] (IdUsuario, Uniforme, Licencia, Reclamo, Comentario) VALUES (?, ?, ?, ?, ?)";
 
-                    using (OleDbCommand comando = new OleDbCommand(query, conexion))
+                    transaccion = conexion.BeginTransaction();
+                    string query = "INSERT INTO Detalles (IdUsuario, [Fecha], Uniforme, Comentario) VALUES (?, ?, ?, ?)";
+                    using (OleDbCommand cmd = new OleDbCommand(query, conexion, transaccion))
                     {
-                        comando.Parameters.AddWithValue("?", _usuario.IdUsuario);
-                        comando.Parameters.AddWithValue("?", uniforme);
-                        comando.Parameters.AddWithValue("?", licencia);
-                        comando.Parameters.AddWithValue("?", reclamo);
-                        comando.Parameters.AddWithValue("?", comentario);
-
-                        comando.ExecuteNonQuery();
-                        MessageBox.Show("✅ Detalles guardados correctamente.");
+                        cmd.Parameters.Add("?", OleDbType.Integer).Value = 1;               // debe existir
+                        cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;
+                        cmd.Parameters.Add("?", OleDbType.VarWChar).Value = "Insumo";
+                        cmd.Parameters.Add("?", OleDbType.VarWChar).Value = "Comentario de prueba";
+                        cmd.ExecuteNonQuery();
                     }
+
+                    // 2. Obtener el último IdDetalle insertado
+                    int idDetalle;
+                    using (OleDbCommand cmdId = new OleDbCommand("SELECT @@IDENTITY", conexion, transaccion))
+                    {
+                        cmdId.Parameters.Clear();
+                        idDetalle = Convert.ToInt32(cmdId.ExecuteScalar());
+                    }
+
+                    // 3. Insertar en tabla intermedia Detalle_Licencia
+                    foreach (int idLicencia in licencias)
+                    {
+                        string queryLicencia = "INSERT INTO Detalle_Licencia (IdDetalle, IdLicencia) VALUES (?, ?)";
+                        using (OleDbCommand cmdLic = new OleDbCommand(queryLicencia, conexion, transaccion))
+                        {
+                            cmdLic.Parameters.Clear();
+                            cmdLic.Parameters.AddWithValue("?", idDetalle);
+                            cmdLic.Parameters.AddWithValue("?", idLicencia);
+                            cmdLic.ExecuteNonQuery();
+                        }
+                    }
+
+                    // 4. Insertar en tabla intermedia Detalle_Reclamos
+                    foreach (int idReclamo in reclamos)
+                    {
+                        string queryReclamo = "INSERT INTO Detalle_Reclamos (IdDetalle, IdReclamos) VALUES (?, ?)";
+                        using (OleDbCommand cmdRec = new OleDbCommand(queryReclamo, conexion, transaccion))
+                        {
+                            cmdRec.Parameters.Clear();
+                            cmdRec.Parameters.AddWithValue("?", idDetalle);
+                            cmdRec.Parameters.AddWithValue("?", idReclamo);
+                            cmdRec.ExecuteNonQuery();
+                        }
+                    }
+
+                    // 5. Confirmar transacción
+                    transaccion.Commit();
+                    MessageBox.Show("✅ Detalles guardados correctamente.");
                 }
                 catch (Exception ex)
                 {
+                    transaccion?.Rollback();
                     MessageBox.Show("❌ Error al guardar los detalles: " + ex.Message);
                 }
             }

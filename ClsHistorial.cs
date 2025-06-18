@@ -6,59 +6,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace PryRiquelme_IEFI
 {
     internal class ClsHistorial
     {
-        public void MostrarHistorial(DataGridView grilla, string usuario, DateTime? fecha, string tarea)
+        ClsConexion conexion = new ClsConexion();
+        public void MostrarHistorial(DataGridView grilla, string usuario, DateTime? fecha)
         {
+            if (string.IsNullOrWhiteSpace(usuario))
+            {
+                MessageBox.Show("Debe seleccionar un usuario.");
+                return;
+            }
+
+            string query = "SELECT Registro_Usuario.Nombre, Detalles.Fecha, Detalles.Uniforme, Detalles.Comentario " +
+                           "FROM ((Registro_Usuario INNER JOIN Detalles ON Registro_Usuario.IdUsuario = Detalles.IdUsuario) " +
+                           "INNER JOIN Detalle_Reclamos ON Detalles.IdDetalles = Detalle_Reclamos.IdDetalle) " +
+                           "INNER JOIN Detalle_Licencia ON Detalles.IdDetalles = Detalle_Licencia.IdDetalle "
+                           +
+                           "WHERE Registro_Usuario.Nombre = @NombreUsuario";
+
+            //if (fecha.HasValue)
+            //{
+            //    query += " AND FORMAT(Detalles.Fecha, "DD/MM/yyyy" = @Fecha";
+            //}
+
             using (OleDbConnection conexion = ClsConexion.Conexion())
             {
                 try
                 {
-                    // Base query
-                    string query = "SELECT * FROM (SELECT Nombre, Tarea, Fecha, Uniforme, Licencia, Reclamo, Comentario FROM Detalles) AS Historial";
-                    List<string> condiciones = new List<string>();
-                    OleDbCommand comando = new OleDbCommand();
-                    comando.Connection = conexion;
 
-                    // Filtros opcionales
-                    if (!string.IsNullOrEmpty(usuario))
-                    {
-                        condiciones.Add("Nombre = ?");
-                        comando.Parameters.AddWithValue("?", usuario);
-                    }
+                    OleDbCommand command = new OleDbCommand(query, conexion);
+                    command.Parameters.AddWithValue("@NombreUsuario", usuario);
 
                     if (fecha.HasValue)
-                    {
-                        condiciones.Add("Fecha = ?");
-                        comando.Parameters.AddWithValue("?", fecha.Value.Date);
-                    }
+                        command.Parameters.AddWithValue("@Fecha", fecha.Value.Date);
+                        
 
-                    if (!string.IsNullOrEmpty(tarea))
-                    {
-                        condiciones.Add("Tarea = ?");
-                        comando.Parameters.AddWithValue("?", tarea);
-                    }
-
-                    if (condiciones.Count > 0)
-                    {
-                        query += " WHERE " + string.Join(" AND ", condiciones);
-                    }
-                    comando.CommandText = query;
-
-                    OleDbDataAdapter adaptador = new OleDbDataAdapter(comando);
+                    OleDbDataAdapter adapter = new OleDbDataAdapter(command);
                     DataTable tabla = new DataTable();
-                    adaptador.Fill(tabla);
+                    adapter.Fill(tabla);
+
                     grilla.DataSource = tabla;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("❌ Error al mostrar historial: " + ex.Message);
+                    MessageBox.Show("Error al mostrar historial: " + ex.Message);
                 }
             }
         }
+
 
         public void CargarUsuarios(ComboBox combo)
         {
