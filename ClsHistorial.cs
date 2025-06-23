@@ -28,11 +28,6 @@ namespace PryRiquelme_IEFI
                            +
                            "WHERE Registro_Usuario.Nombre = @NombreUsuario";
 
-            //if (fecha.HasValue)
-            //{
-            //    query += " AND FORMAT(Detalles.Fecha, "DD/MM/yyyy" = @Fecha";
-            //}
-
             using (OleDbConnection conexion = ClsConexion.Conexion())
             {
                 try
