@@ -27,7 +27,7 @@ namespace PryRiquelme_IEFI
                            "INNER JOIN Detalle_Licencia ON Detalles.IdDetalles = Detalle_Licencia.IdDetalle "
                            +
                            "WHERE Registro_Usuario.Nombre = @NombreUsuario";
-
+            
             using (OleDbConnection conexion = ClsConexion.Conexion())
             {
                 try
@@ -35,10 +35,7 @@ namespace PryRiquelme_IEFI
 
                     OleDbCommand command = new OleDbCommand(query, conexion);
                     command.Parameters.AddWithValue("@NombreUsuario", usuario);
-
-                    if (fecha.HasValue)
-                        command.Parameters.AddWithValue("@Fecha", fecha.Value.Date);
-                        
+    
 
                     OleDbDataAdapter adapter = new OleDbDataAdapter(command);
                     DataTable tabla = new DataTable();

@@ -51,7 +51,7 @@ namespace PryRiquelme_IEFI
             {
                 try
                 {
-                    string query = "SELECT * FROM [Lugar-Tarea]";  // Usá el nombre exacto de la consulta en Access
+                    string query = "SELECT * FROM [Lugar-Tarea]";  // Nombre exacto de la consulta en Access
 
                     OleDbDataAdapter adaptador = new OleDbDataAdapter(query, conexion);
                     DataTable tabla = new DataTable();
@@ -65,18 +65,7 @@ namespace PryRiquelme_IEFI
             }
         }
 
-        private int ObtenerId(string tabla, string nombre, OleDbConnection conexion)
-        {
-            if (string.IsNullOrWhiteSpace(nombre)) return -1;
-
-            string query = $"SELECT Id{tabla} FROM {tabla} WHERE Nombre = ?";
-            using (var comando = new OleDbCommand(query, conexion))
-            {
-                comando.Parameters.AddWithValue("?", nombre);
-                var result = comando.ExecuteScalar();
-                return result != null ? Convert.ToInt32(result) : -1;
-            }
-        }
+       
 
         public void GuardarDetalles(DateTime fecha, string uniforme, List<int> licencias, List<int> reclamos, string comentario)
         {
@@ -91,10 +80,10 @@ namespace PryRiquelme_IEFI
                     string query = "INSERT INTO Detalles (IdUsuario, [Fecha], Uniforme, Comentario) VALUES (?, ?, ?, ?)";
                     using (OleDbCommand cmd = new OleDbCommand(query, conexion, transaccion))
                     {
-                        cmd.Parameters.Add("?", OleDbType.Integer).Value = 1;               // debe existir
-                        cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;
-                        cmd.Parameters.Add("?", OleDbType.VarWChar).Value = "Insumo";
-                        cmd.Parameters.Add("?", OleDbType.VarWChar).Value = "Comentario de prueba";
+                        cmd.Parameters.Add("?", OleDbType.Integer).Value = _usuario.IdUsuario;   
+                        cmd.Parameters.Add("?", OleDbType.Date).Value = fecha;
+                        cmd.Parameters.Add("?", OleDbType.VarWChar).Value = uniforme;
+                        cmd.Parameters.Add("?", OleDbType.VarWChar).Value = comentario;
                         cmd.ExecuteNonQuery();
                     }
 

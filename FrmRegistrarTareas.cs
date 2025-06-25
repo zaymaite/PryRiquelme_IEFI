@@ -92,7 +92,7 @@ namespace PryRiquelme_IEFI
             if (ChkRecibo.Checked) reclamos.Add(2);     // ID 2 para "Recibo"
 
             string comentario = TxtComentario.Text;
-            DateTime fecha = DateTime.Now; // o usar un DateTimePicker si tenés uno
+            DateTime fecha = DateTime.Now; 
 
             ClsGestionDatos detalles = new ClsGestionDatos(usuarioActual);
             detalles.GuardarDetalles(fecha, uniforme, licencias, reclamos, comentario);

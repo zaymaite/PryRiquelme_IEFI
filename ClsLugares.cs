@@ -16,7 +16,6 @@ namespace PryRiquelme_IEFI
             public int ID { get; set; }
             public string Lugar { get; set; }
 
-            public override string ToString() => Lugar;
         }
         
         OleDbDataAdapter adaptador = new OleDbDataAdapter();
